@@ -52,6 +52,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 4px;
 }
 
 .contributors {
@@ -65,8 +66,8 @@ body {
 
 .contributor-avatar {
     border-radius: 50%;
-    width: 40px; /* Tamaño de la imagen */
-    height: 40px; /* Tamaño de la imagen */
+    width: 30px; /* Tamaño de la imagen */
+    height: 30px; /* Tamaño de la imagen */
     position: absolute; /* Permite el superpuesto */
     z-index: 1; /* Asegura que las imágenes se superpongan correctamente */
 }

@@ -87,13 +87,13 @@ class GitEmbed {
 
               // Render contributors (max 5)
               const contributorsContainer = container.querySelector('.contributors-container');
-              contributorsData.slice(0, 5).forEach((contributor, index) => {
+              contributorsData.slice(0, 6).forEach((contributor, index) => {
                   const contributorItem = document.createElement('div');
                   contributorItem.innerHTML = `
-                      <img src="${contributor.avatar_url}" alt="${contributor.login} avatar" class="contributor-avatar" style="position: absolute; left: ${index * 10}px; z-index: ${5 - index};">
+                      <img src="${contributor.avatar_url}" alt="${contributor.login} avatar" class="contributor-avatar" style="left: ${index * 16}px; z-index: ${10 - index}; opacity: ${(10 - index) * 0.1};">
                   `;
                   contributorsContainer.appendChild(contributorItem);
-              });
+              });              
           })
           .catch(error => {
               console.error("Error fetching data:", error);
