@@ -7,8 +7,10 @@ class GitEmbed {
   }
 
   async fetchData() {
-      const repoData = await this.getRepo();
-      const contributorsData = await this.getContributors();
+      const [repoData, contributorsData] = await Promise.all([
+          this.getRepo(),
+          this.getContributors()
+      ]);
       return { repoData, contributorsData };
   }
 
@@ -34,7 +36,7 @@ class GitEmbed {
       container.innerHTML = `
           <a href="#" target="_blank" style="text-decoration: none;">
               <img src="https://via.placeholder.com/150" alt="Placeholder Image" class="repo-image">
-              <h1 class="repo-title">...</h1>
+              <h1 class="repo-title">....</h1>
               <div class="repo-stats">
                   <div class="repo-stat">
                       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 256 256">
@@ -81,19 +83,11 @@ class GitEmbed {
               container.querySelector('.open_issues_count').textContent = repoData.open_issues_count;
               container.querySelector('.contributors_count').textContent = contributorsData.length;
 
-              // Update the link to the actual repo
               const link = container.querySelector('a');
               link.href = repoData.html_url;
 
-              // Render contributors (max 5)
-              const contributorsContainer = container.querySelector('.contributors-container');
-              contributorsData.slice(0, 6).forEach((contributor, index) => {
-                  const contributorItem = document.createElement('div');
-                  contributorItem.innerHTML = `
-                      <img src="${contributor.avatar_url}" alt="${contributor.login} avatar" class="contributor-avatar" style="left: ${index * 16}px; z-index: ${10 - index}; opacity: ${(10 - index) * 0.1};">
-                  `;
-                  contributorsContainer.appendChild(contributorItem);
-              });              
+              // Render a limited number of contributors
+              this.renderContributors(contributorsData.slice(0, 5), container);
           })
           .catch(error => {
               console.error("Error fetching data:", error);
@@ -102,5 +96,16 @@ class GitEmbed {
               container.innerHTML = ''; // Clear loading content
               container.appendChild(errorMessage); // Show error message
           });
+  }
+
+  renderContributors(contributorsData, container) {
+      const contributorsContainer = container.querySelector('.contributors-container');
+      contributorsData.forEach((contributor, index) => {
+          const contributorItem = document.createElement('div');
+          contributorItem.innerHTML = `
+              <img src="${contributor.avatar_url}" alt="${contributor.login} avatar" class="contributor-avatar" style="left: ${index * 16}px; z-index: ${5 - index}; opacity: ${(5 - index) * 0.2};">
+          `;
+          contributorsContainer.appendChild(contributorItem);
+      });
   }
 }
