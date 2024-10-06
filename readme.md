@@ -141,7 +141,7 @@ You can see a sample page using the GitHubEmbed library [here](https://akromicc.
 
 ## Thanks
 
-Thanks to [Drak0Blu3](https://github.com/Drak0Blu3) for ideas and creativity.
+Thanks to [Drak0Blu3](https://github.com/Drak0Blu3) for ideas and creativity 🤗.
 
 ## License
 
