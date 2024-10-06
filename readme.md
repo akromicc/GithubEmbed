@@ -107,12 +107,12 @@ This image illustrates how the embedded GitHub repository card will appear, incl
 
 ## API Reference
 
-### `constructor(org, repo)`
+### `constructor(user, repo)`
 
 Creates a new instance of the `GithubEmbed` class.
 
 - **Parameters**
-  - `org` (string): The GitHub organization name.
+  - `user` (string): The GitHub organization name.
   - `repo` (string): The GitHub repository name.
 
 ### `async fetchData()`
