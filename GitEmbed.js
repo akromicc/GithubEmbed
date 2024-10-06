@@ -1,38 +1,38 @@
 class GitEmbed {
   constructor(org, repo) {
-      this.org = org;
-      this.repo = repo;
-      this.baseUrl = 'https://api.github.com';
+    this.org = org;
+    this.repo = repo;
+    this.baseUrl = 'https://api.github.com';
   }
 
   async fetchData() {
-      const [repoData, contributorsData] = await Promise.all([
-          this.getRepo(),
-          this.getContributors()
-      ]);
-      return { repoData, contributorsData };
+    const [repoData, contributorsData] = await Promise.all([
+      this.getRepo(),
+      this.getContributors()
+    ]);
+    return { repoData, contributorsData };
   }
 
   async getRepo() {
-      const response = await fetch(`${this.baseUrl}/repos/${this.org}/${this.repo}`);
-      if (!response.ok) {
-          throw new Error(`Error fetching repo: ${response.statusText}`);
-      }
-      return await response.json();
+    const response = await fetch(`${this.baseUrl}/repos/${this.org}/${this.repo}`);
+    if (!response.ok) {
+      throw new Error(`Error fetching repo: ${response.statusText}`);
+    }
+    return await response.json();
   }
 
   async getContributors() {
-      const response = await fetch(`${this.baseUrl}/repos/${this.org}/${this.repo}/contributors?per_page=8`);
-      if (!response.ok) {
-          throw new Error(`Error fetching contributors: ${response.statusText}`);
-      }
-      return await response.json();
+    const response = await fetch(`${this.baseUrl}/repos/${this.org}/${this.repo}/contributors?per_page=8`);
+    if (!response.ok) {
+      throw new Error(`Error fetching contributors: ${response.statusText}`);
+    }
+    return await response.json();
   }
 
   render() {
-      const container = document.createElement('div');
-      container.className = 'repo-card';
-      container.innerHTML = `
+    const container = document.createElement('div');
+    container.className = 'repo-card';
+    container.innerHTML = `
           <a href="#" target="_blank" style="text-decoration: none;">
               <img class="repo-image loader">
               <h1 class="repo-title loader-text loader"></h1>
@@ -62,46 +62,50 @@ class GitEmbed {
               <div class="contributors-container"></div>
           </div>
       `;
-      document.body.appendChild(container);
+    document.body.appendChild(container);
 
-      this.fetchData()
-          .then(({ repoData, contributorsData }) => {
-              const image = container.querySelector('.repo-image');
-              const title = container.querySelector('.repo-title');
+    this.fetchData()
+      .then(({ repoData, contributorsData }) => {
+        const image = container.querySelector('.repo-image');
+        const title = container.querySelector('.repo-title');
 
-              image.src = repoData.owner.avatar_url;
-              image.alt = `${repoData.full_name} logo`;
-              title.textContent = repoData.full_name;
+        image.src = repoData.owner.avatar_url;
+        image.alt = `${repoData.full_name} logo`;
+        title.textContent = repoData.full_name;
 
-              container.querySelector('.stargazers_count').textContent = repoData.stargazers_count;
-              container.querySelector('.forks_count').textContent = repoData.forks_count;
-              container.querySelector('.open_issues_count').textContent = repoData.open_issues_count;
+        container.querySelector('.stargazers_count').textContent = repoData.stargazers_count;
+        container.querySelector('.forks_count').textContent = repoData.forks_count;
+        container.querySelector('.open_issues_count').textContent = repoData.open_issues_count;
 
-              const link = container.querySelector('a');
-              link.href = repoData.html_url;
+        const link = container.querySelector('a');
+        link.href = repoData.html_url;
 
-              this.renderContributors(contributorsData.slice(0, 5), container);
-              
-              container.querySelectorAll('.loader').forEach(el => el.classList.remove('loader'));
-              container.querySelectorAll('.loader-text').forEach(el => el.classList.remove('loader-text'));
-          })
-          .catch(error => {
-              console.error("Error fetching data:", error);
-              const errorMessage = document.createElement('div');
-              errorMessage.innerHTML = `<p>Error loading data: ${error.message}</p>`;
-              container.innerHTML = ''; // Clear loading content
-              container.appendChild(errorMessage); // Show error message
-          });
+        if (contributorsData.length > 1) {
+          this.renderContributors(contributorsData.slice(0, 5), container);
+        } else {
+          container.querySelector('.contributors').style.display = 'none';
+        }
+
+        container.querySelectorAll('.loader').forEach(el => el.classList.remove('loader'));
+        container.querySelectorAll('.loader-text').forEach(el => el.classList.remove('loader-text'));
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+        const errorMessage = document.createElement('div');
+        errorMessage.innerHTML = `<p>Error loading data: ${error.message}</p>`;
+        container.innerHTML = ''; // Clear loading content
+        container.appendChild(errorMessage); // Show error message
+      });
   }
 
   renderContributors(contributorsData, container) {
-      const contributorsContainer = container.querySelector('.contributors-container');
-      contributorsData.forEach((contributor, index) => {
-          const contributorItem = document.createElement('div');
-          contributorItem.innerHTML = `
+    const contributorsContainer = container.querySelector('.contributors-container');
+    contributorsData.forEach((contributor, index) => {
+      const contributorItem = document.createElement('div');
+      contributorItem.innerHTML = `
               <img src="${contributor.avatar_url}" alt="${contributor.login} avatar" class="contributor-avatar" style="left: ${index * 16}px; z-index: ${5 - index}; opacity: ${(5 - index) * 0.2};">
           `;
-          contributorsContainer.appendChild(contributorItem);
-      });
+      contributorsContainer.appendChild(contributorItem);
+    });
   }
 }
