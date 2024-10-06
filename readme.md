@@ -139,6 +139,10 @@ Renders the contributors' avatars.
 
 You can see a sample page using the GitHubEmbed library [here](https://akromicc.github.io/GithubEmbed).
 
+## Thanks
+
+Thanks to [Drak0Blu3](https://github.com/Drak0Blu3) for ideas and creativity.
+
 ## License
 
 This project is licensed under the MIT License.
