@@ -1,4 +1,4 @@
-class GitEmbed {
+class GithubEmbed {
   constructor(org, repo) {
     this.org = org;
     this.repo = repo;
