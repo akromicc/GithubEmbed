@@ -101,7 +101,7 @@ githubEmbed.render(container);
 
 ## Images
 
-![GitHub Repository Card Example](https://example.com)
+![GitHub Repository Card Example](https://github.com/akromicc/GithubEmbed/blob/main/example.png)
 
 This image illustrates how the embedded GitHub repository card will appear, including the repository title, stats (stars, forks, issues), and contributor avatars.
 
