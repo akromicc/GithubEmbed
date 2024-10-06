@@ -25,11 +25,11 @@ Alternatively, you can download the `GithubEmbed.js` and `GithubEmbed.css` files
 
 ## Usage
 
-To use the GitHubEmbed library, create an instance of the `GithubEmbed` class, passing the GitHub organization and repository name as arguments. Then, call the `render()` method to display the repository information.
+To use the GitHubEmbed library, create an instance of the `GithubEmbed` class, passing the GitHub user and repository name as arguments. Then, call the `render()` method to display the repository information.
 
 ```javascript
 // Create an instance of the GitHubEmbed class
-const githubEmbed = new GithubEmbed('organization', 'repository');
+const githubEmbed = new GithubEmbed('user', 'repository');
 
 // Render the repository information
 githubEmbed.render();
@@ -112,7 +112,7 @@ This image illustrates how the embedded GitHub repository card will appear, incl
 Creates a new instance of the `GithubEmbed` class.
 
 - **Parameters**
-  - `user` (string): The GitHub organization name.
+  - `user` (string): The GitHub user name.
   - `repo` (string): The GitHub repository name.
 
 ### `async fetchData()`
