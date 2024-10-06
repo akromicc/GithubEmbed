@@ -1,35 +1,20 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Git Embed</title>
-    <link rel="stylesheet" href="GitEmbed.css">
+    <title>GitHub Embed Example</title>
+    <script src="https://cdn.jsdelivr.net/gh/akromicc/GithubEmbed@v1.0/GithubEmbed.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/akromicc/GithubEmbed@v1.0/GithubEmbed.css">
 </head>
-
 <body>
-    <div id="test"></div>
-    <div id="test1"></div>
-    <div id="test2"></div>
-    <div id="test3"></div>
-    
-    <script src="GitEmbed.js" defer></script>
+    <div id="github-container"></div>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const gitEmbed4 = new GitEmbed('akromicc', 'portfolio'); // K3s - Lightweight Kubernetes
-            gitEmbed4.render('#test');
-
-            const gitEmbed5 = new GitEmbed('hashicorp', 'consul'); // Consul - Service mesh
-            gitEmbed5.render('#test1');
-
-            const gitEmbed6 = new GitEmbed('facebook', 'react'); // React - Librería de UI
-            gitEmbed6.render('#test2');
-
-            const gitEmbed7 = new GitEmbed('reduxjs', 'redux'); // Redux - State management
-            gitEmbed7.render('#test3');
-        });
+        // Create an instance of the GitHubEmbed class
+        const githubEmbed = new GithubEmbed('facebook', 'react');
+        
+        // Render the repository information into the specified container
+        githubEmbed.render(document.getElementById('github-container'));
     </script>
 </body>
-
 </html>
