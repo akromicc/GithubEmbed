@@ -1,4 +1,4 @@
-# GitEmbed
+# GithubEmbed
 
 A simple JavaScript library for embedding GitHub repository information, including details about the repository and its contributors.
 
