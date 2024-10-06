@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git Embed</title>
     <link rel="stylesheet" href="GitEmbed.css">
 </head>
+
 <body>
     <div id="miCuadro"></div>
+    <div id="miCuadro1"></div>
     <div id="miCuadro2"></div>
     <div id="miCuadro3"></div>
+    
     <script src="GitEmbed.js" defer></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const gitEmbed = new GitEmbed('openmultiplayer', 'web');
-            gitEmbed.render('#miCuadro');
+            const gitEmbed4 = new GitEmbed('k3s-io', 'k3s'); // K3s - Lightweight Kubernetes
+            gitEmbed4.render('#miCuadro');
 
-            const gitEmbed2 = new GitEmbed('akromicc', 'portfolio');
-            gitEmbed2.render('#miCuadro2')
+            const gitEmbed5 = new GitEmbed('hashicorp', 'consul'); // Consul - Service mesh
+            gitEmbed5.render('#miCuadro1');
 
-            const gitEmbed3 = new GitEmbed('Drak0Blu3', 'nvim-lazy-config');
-            gitEmbed3.render('#miCuadro3')
+            const gitEmbed6 = new GitEmbed('facebook', 'react'); // React - Librería de UI
+            gitEmbed6.render('#miCuadro2');
+
+            const gitEmbed7 = new GitEmbed('reduxjs', 'redux'); // Redux - State management
+            gitEmbed7.render('#miCuadro3');
         });
-
     </script>
 </body>
+
 </html>

@@ -22,7 +22,7 @@ class GitEmbed {
   }
 
   async getContributors() {
-      const response = await fetch(`${this.baseUrl}/repos/${this.org}/${this.repo}/contributors`);
+      const response = await fetch(`${this.baseUrl}/repos/${this.org}/${this.repo}/contributors?per_page=8`);
       if (!response.ok) {
           throw new Error(`Error fetching contributors: ${response.statusText}`);
       }
@@ -56,10 +56,6 @@ class GitEmbed {
                       </svg>
                       <span class="open_issues_count">0</span> <span>Issues</span>
                   </div>
-                  <div class="repo-stat">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="9" cy="9" r="4"/><path d="M16 19c0-3.314-3.134-6-7-6s-7 2.686-7 6m13-6a4 4 0 1 0-3-6.646"/><path d="M22 19c0-3.314-3.134-6-7-6c-.807 0-2.103-.293-3-1.235"/></g></svg>
-                      <span class="contributors_count">0</span> <span>Contributors</span>
-                  </div>
               </div>
           </a>
           <div class="contributors">
@@ -80,7 +76,6 @@ class GitEmbed {
               container.querySelector('.stargazers_count').textContent = repoData.stargazers_count;
               container.querySelector('.forks_count').textContent = repoData.forks_count;
               container.querySelector('.open_issues_count').textContent = repoData.open_issues_count;
-              container.querySelector('.contributors_count').textContent = contributorsData.length;
 
               const link = container.querySelector('a');
               link.href = repoData.html_url;
