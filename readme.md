@@ -135,6 +135,10 @@ Renders the repository information in a newly created container element.
 
 Renders the contributors' avatars.
 
+## Sample Page
+
+You can see a sample page using the GitHubEmbed library [here](https://akromicc.github.io/GithubEmbed).
+
 ## License
 
 This project is licensed under the MIT License.
