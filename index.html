@@ -7,12 +7,22 @@
     <link rel="stylesheet" href="GitEmbed.css">
 </head>
 <body>
+    <div id="miCuadro"></div>
+    <div id="miCuadro2"></div>
+    <div id="miCuadro3"></div>
     <script src="GitEmbed.js" defer></script>
     <script>
-        // Inicializar el componente
         document.addEventListener("DOMContentLoaded", () => {
-            const gitEmbed = new GitEmbed('openmultiplayer', 'web'); // Reemplaza 'org' y 'repo' con los valores deseados
+            const gitEmbed = new GitEmbed('openmultiplayer', 'web');
+            gitEmbed.render('#miCuadro');
+
+            const gitEmbed2 = new GitEmbed('akromicc', 'portfolio');
+            gitEmbed2.render('#miCuadro2')
+
+            const gitEmbed3 = new GitEmbed('Drak0Blu3', 'nvim-lazy-config');
+            gitEmbed3.render('#miCuadro3')
         });
+
     </script>
 </body>
 </html>

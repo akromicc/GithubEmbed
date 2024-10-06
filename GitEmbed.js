@@ -3,7 +3,6 @@ class GitEmbed {
       this.org = org;
       this.repo = repo;
       this.baseUrl = 'https://api.github.com';
-      this.render();
   }
 
   async fetchData() {

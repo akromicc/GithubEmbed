@@ -61,13 +61,13 @@ body {
 
 .contributors-container {
     position: relative;
-    height: 40px; /* Ajusta según sea necesario */
+    height: 40px;
 }
 
 .contributor-avatar {
     border-radius: 50%;
-    width: 30px; /* Tamaño de la imagen */
-    height: 30px; /* Tamaño de la imagen */
-    position: absolute; /* Permite el superpuesto */
-    z-index: 1; /* Asegura que las imágenes se superpongan correctamente */
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    z-index: 1;
 }
