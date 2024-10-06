@@ -9,7 +9,7 @@ body {
 }
 
 .repo-card {
-    background: white;
+    background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     max-width: 280px;
@@ -70,4 +70,29 @@ body {
     height: 30px;
     position: absolute;
     z-index: 1;
+}
+
+/* Animations */
+
+.loader
+{
+    animation: loading-animation 1s linear infinite alternate;
+    width: 90px;
+    height: 90px;
+
+}
+
+.loader-text {
+    width: 100%;
+    height: 18px;
+    border-radius: 10px;
+}
+
+@keyframes loading-animation {
+    0% { 
+        background-color: #f1f1f1;
+     }
+    100% { 
+        background-color: #b6b6b6;
+     }
 }
